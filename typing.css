@@ -1,0 +1,84 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  background: linear-gradient(to left, #a78aeb, #575187);
+}
+.Main_Container {
+  background-color: rgba(127, 197, 194, 0.6);
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px rgba(255, 255, 255, 0.5),
+    -5px -5px 10px rgba(255, 255, 255, 0.5);
+  width: 90%;
+  max-width: 700px;
+  padding: 40px;
+}
+
+.Heading {
+  color: aquamarine;
+  margin: 20px;
+  font-size: xx-large;
+  letter-spacing: 1.5px;
+}
+#Given_Text {
+  border: #575187 1px solid;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  animation: fadeIn 1s ease-out forwards;
+  background-color: #7a82e0;
+  color: #ffffff;
+  margin-bottom: 25px;
+  padding: 25px;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+#Input_Text {
+  width: calc(100% - 55px);
+  padding: 12px;
+  border: 2px solid #ff79c6;
+  border-radius: 8px;
+  background-color: #282a36;
+  color: #f8f8f2;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+.Input_Text:focus {
+  outline: none;
+  border-color: #50fa7b;
+}
+.Speed_Accuracy {
+  margin-top: 30px;
+  font-size: larger;
+  font-weight: bold;
+}
+
+#Message_Area {
+  margin-top: 30px;
+  font-size: larger;
+  font-weight: bold;
+}
+
+.correct {
+  color: #50fa7b;
+}
+
+.incorrect {
+  color: #ff5555;
+  text-decoration: line-through;
+}
