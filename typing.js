@@ -77,39 +77,41 @@ document.addEventListener("DOMContentLoaded", () => {
   InputTextEl.addEventListener("keyup", (t) => {
     const textTyped = InputTextEl.value;
     const textOutput = GivenTextEl.textContent;
-    if (t.key === "Backspace") {
-      console.log(textTyped);
-      console.log(currentIndex);
-      if (currentIndex > 0) {
-        currentIndex--;
-
-        GivenTextEl.innerHTML =
-          textOutput.substring(0, currentIndex) +
-          `<span class='none'>${textOutput[currentIndex]}</span>` +
-          textOutput.substring(currentIndex + 1);
-      }
-    } else {
-      if (currentIndex < textOutput.length) {
+    if (t.key !== "CapsLock") {
+      if (t.key === "Backspace") {
         console.log(textTyped);
         console.log(currentIndex);
+        if (currentIndex > 0) {
+          currentIndex--;
 
-        const isCorrect = checkCharacter(
-          textTyped[currentIndex],
-          textOutput[currentIndex]
-        );
-        GivenTextEl.innerHTML =
-          textOutput.substring(0, currentIndex) +
-          `<span class='${isCorrect ? "correct" : "incorrect"}'>${
+          GivenTextEl.innerHTML =
+            textOutput.substring(0, currentIndex) +
+            `<span class='none'>${textOutput[currentIndex]}</span>` +
+            textOutput.substring(currentIndex + 1);
+        }
+      } else {
+        if (currentIndex < textOutput.length) {
+          console.log(textTyped);
+          console.log(currentIndex);
+
+          const isCorrect = checkCharacter(
+            textTyped[currentIndex],
             textOutput[currentIndex]
-          }</span>` +
-          textOutput.substring(currentIndex + 1);
-        currentIndex++;
+          );
+          GivenTextEl.innerHTML =
+            textOutput.substring(0, currentIndex) +
+            `<span class='${isCorrect ? "correct" : "incorrect"}'>${
+              textOutput[currentIndex]
+            }</span>` +
+            textOutput.substring(currentIndex + 1);
+          currentIndex++;
+        }
+        if (currentIndex === textOutput.length) {
+          displayMessage("Text Completed starting new one");
+          initializeGame();
+        }
+        updateFeedback();
       }
-      if (currentIndex === textOutput.length) {
-        displayMessage("Text Completed starting new one");
-        initializeGame();
-      }
-      updateFeedback();
     }
   });
   initializeGame();
